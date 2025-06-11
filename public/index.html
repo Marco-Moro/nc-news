@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NC News</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NC News API</title>
 </head>
 <body>
-    <header>
-        <h1>Articles</h1>
-        <p>Football</p>
-    </header>
+  <h1>Endpoints</h1>
+  <ul>
+    <li><a href="#topics">GET /api/topics</a></li>
+    <li><a href="#articles">GET /api/articles</a></li>
+    <li><a href="#users">GET /api/users</a></li>
+  </ul>
+  <h3 id="topics">GET /api/topics</h3>
+  <p>Restituisce tutti i topic disponibili.</p>
+  <pre>{
+  "topics": [
+    {
+      "slug": "coding",
+      "description": "Code is love, code is life"
+    }
+  ]
+}</pre>
+
+  <h3 id="articles">GET /api/articles</h3>
+  <p>Restituisce tutti gli articoli. Accetta le query <code>sort_by</code>, <code>order</code> e <code>topic</code>.</p>
+  <pre>{
+  "articles": [
+    {
+      "article_id": 1,
+      "title": "Running a Node App",
+      "author": "jessjelly"
+    }
+  ]
+}</pre>
+
+  <h3 id="users">GET /api/users</h3>
+  <p>Restituisce tutti gli utenti.</p>
+  <pre>{
+  "users": [
+    {
+      "username": "butter_bridge",
+      "name": "Jonny"
+    }
+  ]
+}</pre>
 
 </body>
 </html>
 
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NC News – Frontend</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <h1>NC News</h1>
-  <div id="content"></div>
-
-  <script src="main.js"></script>
-</body>
-</html> -->
