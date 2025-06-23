@@ -1,52 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NC News API</title>
-</head>
-<body>
-  <h1>Endpoints</h1>
-  <ul>
-    <li><a href="#topics">GET /api/topics</a></li>
-    <li><a href="#articles">GET /api/articles</a></li>
-    <li><a href="#users">GET /api/users</a></li>
-  </ul>
-  <h3 id="topics">GET /api/topics</h3>
-  <p>Restituisce tutti i topic disponibili.</p>
-  <pre>{
-  "topics": [
-    {
-      "slug": "coding",
-      "description": "Code is love, code is life"
-    }
-  ]
-}</pre>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NC News API Documentation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>NC News API</h1>
+      <nav>
+        <ul>
+          <li><a href="#endpoints">Endpoints</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <h3 id="articles">GET /api/articles</h3>
-  <p>Restituisce tutti gli articoli. Accetta le query <code>sort_by</code>, <code>order</code> e <code>topic</code>.</p>
-  <pre>{
+    <main>
+      <section id="endpoints">
+        <h2>Available Endpoints</h2>
+        <ul>
+          <li>GET /api</li>
+          <li>GET /api/topics</li>
+          <li>GET /api/articles</li>
+          <li>GET /api/users</li>
+          <li>GET /api/articles/:article_id</li>
+          <li>GET /api/articles/:article_id/comments</li>
+          <li>POST /api/articles/:article_id/comments</li>
+          <li>PATCH /api/articles/:article_id</li>
+          <li>DELETE /api/comments/:comment_id</li>
+        </ul>
+
+        <section>
+          <h3>GET /api</h3>
+          <p>
+            Serves a JSON representation of all the available endpoints of the
+            API.
+          </p>
+          <pre>
+{
+  "endpoints": {
+    "/api": "API overview",
+    "/api/topics": "List of topics",
+    "/api/articles": "List of articles",
+    "/api/articles/:article_id/comments": "Add a comment"
+  }
+}</pre
+          >
+        </section>
+
+        <section>
+          <h3>GET /api/topics</h3>
+          <p>Serves an array of all topics.</p>
+          <pre>
+{
+  "topics": [
+    { "slug": "football", "description": "Footie!" }
+  ]
+}</pre
+          >
+        </section>
+
+        <section>
+          <h3>GET /api/articles</h3>
+          <p>
+            Serves an array of all articles, supports optional queries: sort_by,
+            order and topic.
+          </p>
+          <pre>
+{
   "articles": [
     {
-      "article_id": 1,
-      "title": "Running a Node App",
-      "author": "jessjelly"
+      "title": "Seafood substitutions are increasing",
+      "topic": "cooking",
+      "author": "weegembump",
+      "created_at": "2018-05-30T15:59:13.341Z",
+      "votes": 0,
+      "comment_count": 6
     }
   ]
-}</pre>
+}</pre
+          >
+        </section>
 
-  <h3 id="users">GET /api/users</h3>
-  <p>Restituisce tutti gli utenti.</p>
-  <pre>{
+        <section>
+          <h3>GET /api/users</h3>
+          <p>Serves an array of all users.</p>
+          <pre>
+{
   "users": [
     {
       "username": "butter_bridge",
-      "name": "Jonny"
+      "name": "jonny",
+      "avatar_url": "https://www.healthytherapies.com/wp-content/uploads/2016/06/Lime3.jpg"
     }
   ]
-}</pre>
+}</pre
+          >
+        </section>
 
-</body>
+        <section>
+          <h3>GET /api/articles/:article_id</h3>
+          <p>
+            Serves an article object by article_id, including the total count of
+            comments.
+          </p>
+          <pre>
+{
+  "article": {
+    "author": "butter_bridge",
+    "title": "Living in the shadow of a great man",
+    "article_id": 1,
+    "body": "I find this existence challenging",
+    "topic": "mitch",
+    "created_at": "2020-07-09T20:11:00.000Z",
+    "votes": 100,
+    "article_img_url": "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700",
+    "comment_count": 11
+  }
+}</pre
+          >
+        </section>
+
+        <section>
+          <h3>GET /api/articles/:article_id/comments</h3>
+          <p>
+            Serves an array of comments for the given article_id, sorted by most
+            recent first.
+          </p>
+          <pre>
+{
+  "comments": [
+    {
+      "comment_id": 1,
+      "votes": 16,
+      "created_at": "2022-09-09T20:12:00.000Z",
+      "author": "butter_bridge",
+      "body": "Oh, I've got compassion running out of my nose, pal! I'm the Sultan of Sentiment!",
+      "article_id": 1
+    }
+  ]
+}</pre
+          >
+        </section>
+
+        <section>
+          <h3>POST /api/articles/:article_id/comments</h3>
+          <p>
+            Adds a new comment to the article with the specified article_id.
+          </p>
+          <pre>
+Request Body:
+{
+  "username": "butter_bridge",
+  "body": "Oh, I've got compassion running out of my nose, pal! I'm the Sultan of Sentiment!"
+}
+
+Example Response:
+{
+  "comment": {
+    "comment_id": 19,
+    "votes": 0,
+    "created_at": "2025-06-08T10:00:00.000Z",
+    "author": "butter_bridge",
+    "body": "Oh, I've got compassion running out of my nose, pal! I'm the Sultan of Sentiment!",
+    "article_id": 1
+  }
+}</pre
+          >
+        </section>
+
+        <section>
+          <h3>PATCH /api/articles/:article_id</h3>
+          <p>Updates the vote count of the specified article.</p>
+          <pre>
+Request Body:
+{
+  "inc_votes": 1
+}
+
+Example Response:
+{
+  "article": {
+    "article_id": 1,
+    "title": "Living in the shadow of a great man",
+    "topic": "mitch",
+    "author": "butter_bridge",
+    "body": "I find this existence challenging",
+    "created_at": "2020-07-09T20:11:00.000Z",
+    "votes": 101,
+    "article_img_url": "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700"
+  }
+}</pre
+          >
+        </section>
+
+        <section>
+          <h3>DELETE /api/comments/:comment_id</h3>
+          <p>Deletes the comment with the specified comment_id.</p>
+          <pre>Status: 204 No Content</pre>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>NC News API &copy; 2025</p>
+    </footer>
+  </body>
 </html>
-
-

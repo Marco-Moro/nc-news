@@ -1,11 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 const endpoints = require("./endpoints.json");
 const db = require("./db/connection");
-const cors = require("cors");
 
 const { getApi } = require("./controllers/api.controller");
 const { getTopics } = require("./controllers/topics.controller");
