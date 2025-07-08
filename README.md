@@ -1,9 +1,9 @@
-# 📰 NC News - Backend API
+# NC News - Backend API
 
 ## 🌍 Hosted Version
 
 The backend API is hosted live at:  
-👉 [https://nc-news-backend-marco.onrender.com/api](https://nc-news-backend-marco.onrender.com/api)  
+[https://nc-news-backend-marco.onrender.com/api](https://nc-news-backend-marco.onrender.com/api)  
 _(Replace this with your actual Render link if different)_
 
 ---
@@ -37,7 +37,7 @@ In .env.test add: PGDATABASE=nc_news_test
 
 These files are used to connect the project to the correct database.
 
-## 🛠️ Functionality & Endpoints
+## Functionality & Endpoints
 
 All routes follow RESTful principles and return consistent JSON responses. Here are the core endpoints:
 
@@ -87,20 +87,20 @@ Returns a single user by username.
 
 ---
 
-## 🔗 Frontend Repository
+## Frontend Repository
 
-👉 [https://github.com/Marco-Moro/nc-news-fe](https://github.com/Marco-Moro/nc-news-fe)
+[https://github.com/Marco-Moro/nc-news-fe](https://github.com/Marco-Moro/nc-news-fe)
 
 ---
 
-## ⚙️ Minimum Requirements
+## Minimum Requirements
 
 - Node.js: **v18.17.1**
 - PostgreSQL: locally running instance
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ### 1. Clone the repo
 
@@ -148,7 +148,7 @@ Server will run by default on `http://localhost:9090`
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 npm test
@@ -158,6 +158,6 @@ Uses Jest and Supertest for testing all endpoints, including error handling and 
 
 ---
 
-## 🏫 Credits
+## Credits
 
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
