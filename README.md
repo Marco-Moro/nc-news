@@ -1,13 +1,5 @@
 # NC News - Backend API
 
-## Hosted Version
-
-The backend API is hosted live at:  
-[https://nc-news-backend-marco.onrender.com/api](https://nc-news-backend-marco.onrender.com/api)  
-_(Replace this with your actual Render link if different)_
-
----
-
 ## Project Overview
 
 This is the **backend** for the NC News project, a RESTful API built using **Node.js**, **Express.js**, and **PostgreSQL** (with **pg** and **dotenv**).
